@@ -3,8 +3,10 @@ import NavBar from "./NavBar";
 
 const Header = () => {
     return (
-        <header className="border-4 font-bold p-3 text-center">
-            PRODUCTS
+        <header className="border-4 font-bold p-3 flex justify-between items-center">
+            <span className="font-bold">
+                PRODUCTS
+            </span>
             <NavBar/>
         </header>
     );
