@@ -1,30 +1,55 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useTransition, animated } from 'react-spring'
 
 const NavBar = () => {
     const [showMenu,setMenu] = useState(false);
 
-    let menu = null;
-    let menuMask = null;
+    const menuTransitions = useTransition(showMenu, {
+        from: { opacity: 0 },
+        enter: { opacity: 1 },
+        leave: { opacity: 0 },
+    });
 
-    if (showMenu) { // conditional rendering
-        menu = <div className='fixed bg-white top-0 left-0 w-4/5 h-full z-50 shadow'>
-            Menu
-        </div>
-        menuMask = <div className="bg-black-t-50 fixed top-0 left-0 w-full h-full z-50"
-        onClick={() =>  setMenu(false)}>
-        </div>
-    }
+    const maskTransitions = useTransition(showMenu, {
+        from: { opacity: 0, transform: 'translateX(-100%)' },
+        enter: { opacity: 1, transform: 'translateX(0%)' },
+        leave: { opacity: 0, transform: 'translateX(-100%)' },
+    });
     
     return (
         <nav >
             <span className='text-xl'>
                 <FontAwesomeIcon icon={faBars} 
-                onClick={() => setMenu(!showMenu)}/> {/* toggek Menu */}
+                onClick={() => setMenu(!showMenu)}/> {/* toggle Menu */}
             </span>
-            {menuMask}
-            {menu}
+            {
+                maskTransitions((styles, item) => 
+                item &&
+                <animated.div style={styles}
+                className='bg-black-t-50 fixed top-0 left-0 w-full h-full z-50'
+                onClick={() => setMenu(false)}>
+                </animated.div>)
+            }
+
+            {
+                menuTransitions((styles, item) => 
+                item &&
+                <animated.div style={styles}
+                className='fixed bg-white top-0 left-0 w-4/5 h-full z-50 shadow p-4'>
+                    <span className='font-bold font-black'>
+                        MENU
+                    </span>
+                    <ul>
+                        <li>Home</li>
+                        <li>About</li>
+                        <li>Products</li>
+                        <li>Contact Us</li>
+                        <li>Customer Service</li>
+                    </ul>
+                </animated.div>)
+            }
         </nav>
     );
 }
