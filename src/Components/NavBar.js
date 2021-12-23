@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useTransition, animated } from 'react-spring'
+import Menu from './Menu';
 
 const NavBar = () => {
     const [showMenu,setMenu] = useState(false);
@@ -38,16 +39,7 @@ const NavBar = () => {
                 item &&
                 <animated.div style={styles}
                 className='fixed bg-white top-0 left-0 w-4/5 h-full z-50 shadow p-4'>
-                    <span className='font-bold font-black'>
-                        MENU
-                    </span>
-                    <ul>
-                        <li>Home</li>
-                        <li>About</li>
-                        <li>Products</li>
-                        <li>Contact Us</li>
-                        <li>Customer Service</li>
-                    </ul>
+                    <Menu hideMenu={() => setMenu(false)}/>
                 </animated.div>)
             }
         </nav>
