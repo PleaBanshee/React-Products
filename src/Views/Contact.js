@@ -1,3 +1,6 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+import emailjs from 'emailjs-com';
 import { useForm } from 'react-hook-form';
 
 const Contact = () => {
@@ -6,18 +9,46 @@ const Contact = () => {
         handleSubmit,
         reset,
         formState: { errors }
-      } = useForm();
+    } = useForm();
+
+    const toastifySuccess = () => {
+        toast('Form sent!', {
+          position: 'bottom-right',
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,  
+          draggable: false,
+          className: 'submit-feedback success',
+          toastId: 'notifyToast'
+        });
+    };
       
-      const onSubmit = async (data) => {
-        const { firstname, lastname, email, phone, subject, message } = data;
-        
-        console.log('First Name: ', firstname);
-        console.log('Last Name: ', lastname);
-        console.log('Email: ', email);
-        console.log('Phone: ', phone);
-        console.log('Subject: ', subject);
-        console.log('Message: ', message);
-      };
+    const onSubmit = async (data) => {
+        const { firstname, lastname, phone, email, subject, message } = data;
+
+        try {
+            const templateParams = {
+                firstname,
+                lastname,
+                phone,
+                email,
+                subject,
+                message
+            };
+            await emailjs.send(
+            process.env.REACT_APP_SERVICE_ID,
+            process.env.REACT_APP_TEMPLATE_ID,
+            templateParams,
+            process.env.REACT_APP_USER_ID
+            );
+            reset();
+            toastifySuccess();
+            console.log('Email sent!');
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     return (
         <div>
@@ -25,19 +56,42 @@ const Contact = () => {
                 Contact Us
             </h1>
             <div className="p-6  h-full">
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col">
-                <label htmlFor="first-name" className='font-bold'>First name</label>
-                <input type="text" id="first-name" name="first-name" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required />
+                <label htmlFor="first-name" name="first-name" className='font-bold'>First name</label>
+                <input type="text" id="first-name" name="first-name" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required 
+                {...register('first-name', {
+                    required: { value: true, message: 'Please enter your first name' },
+                    maxLength: {
+                      value: 30,
+                      message: 'Please use 30 characters or less'
+                }
+                })}/>
+                {errors.firstname && <span className='errorMessage'>{errors.firstname.message}</span>}
                 </div>
                 <div className="flex flex-col">
                 <label htmlFor="last-name" className='font-bold'>Last name</label>
-                <input type="text" id="last-name" name="last-name" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required />
+                <input type="text" id="last-name" name="last-name" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required 
+                {...register('last-name', {
+                    required: { value: true, message: 'Please enter your last name' },
+                    maxLength: {
+                      value: 30,
+                      message: 'Please use 30 characters or less'
+                }
+                })}/>
+                {errors.lastname && <span className='errorMessage'>{errors.lastname.message}</span>}
                 </div>
                 <div className="flex flex-col">
                 <label htmlFor="email" className='font-bold'>Email</label>
-                <input type="email" id="email" name="email" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required />
+                <input type="email" id="email" name="email" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required 
+                {...register('email', {
+                    required: true,
+                    pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+                })}/>
+                {errors.email && (
+                      <span className='errorMessage'>Please enter a valid email address</span>
+                )}
                 </div>
                 <div className="flex flex-col">
                 <label htmlFor="phone">
@@ -50,7 +104,17 @@ const Contact = () => {
                 </div>
                 <div className="flex flex-col col-span-2">
                 <label htmlFor="subject" className='font-bold'>Subject</label>
-                <input type="text" id="subject" name="subject" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required />
+                <input type="text" id="subject" name="subject" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required 
+                {...register('subject', {
+                    required: { value: true, message: 'Please enter a subject' },
+                    maxLength: {
+                      value: 75,
+                      message: 'Subject cannot exceed 75 characters'
+                    }
+                })}/>
+                {errors.subject && (
+                      <span className='errorMessage'>{errors.subject.message}</span>
+                )}
                 </div>
                 <div className="flex flex-col col-span-2">
                 <label htmlFor="subject">
@@ -59,7 +123,11 @@ const Contact = () => {
                     <span className="ml-auto opacity-75 font-bold">Max 500 characters</span>
                     </div>
                 </label>
-                <textarea maxLength="500" rows="4" type="text" id="subject" name="subject" className="form-input px-3 py-2 rounded-md border-4 border-blue-300  h-6/6" required />
+                <textarea maxLength="500" rows="4" type="text" id="subject" name="subject" className="form-input px-3 py-2 rounded-md border-4 border-blue-300  h-6/6" required 
+                {...register('message', {
+                    required: true
+                })}/>
+                {errors.message && <span className='errorMessage'>Please enter a message</span>}
                 </div>
             </div>
             <div className="flex justify-end py-4 justify-center">
@@ -68,6 +136,7 @@ const Contact = () => {
                 </button>
             </div>
             </form>
+            <ToastContainer/>
         </div>
         </div>
     );
