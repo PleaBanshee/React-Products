@@ -44,7 +44,7 @@ const Contact = () => {
             );
             reset();
             toastifySuccess();
-            console.log('Email sent!');
+            console.log(`Email sent!`);
         } catch (e) {
             console.log(e);
         }
@@ -60,38 +60,54 @@ const Contact = () => {
             <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col">
                 <label htmlFor="first-name" name="first-name" className='font-bold'>First name</label>
-                <input type="text" id="first-name" name="first-name" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required 
-                {...register('first-name', {
-                    required: { value: true, message: 'Please enter your first name' },
-                    maxLength: {
-                      value: 30,
-                      message: 'Please use 30 characters or less'
-                }
-                })}/>
-                {errors.firstname && <span className='errorMessage'>{errors.firstname.message}</span>}
+                <input 
+                    type="text" 
+                    id="first-name" 
+                    name="first-name" 
+                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2"
+                    {...register('firstname', {
+                        required: { value: true, message: 'Please enter your name' },
+                        maxLength: {
+                          value: 30,
+                          message: 'Please use 30 characters or less'
+                        }
+                    })}
+                    required 
+                />
+                {errors.firstname && <span>{errors.firstname.message}</span>}
                 </div>
                 <div className="flex flex-col">
                 <label htmlFor="last-name" className='font-bold'>Last name</label>
-                <input type="text" id="last-name" name="last-name" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required 
-                {...register('last-name', {
-                    required: { value: true, message: 'Please enter your last name' },
-                    maxLength: {
-                      value: 30,
-                      message: 'Please use 30 characters or less'
-                }
-                })}/>
-                {errors.lastname && <span className='errorMessage'>{errors.lastname.message}</span>}
+                <input 
+                    type="text" 
+                    id="last-name" 
+                    name="last-name" 
+                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2"
+                    {...register('lastname', {
+                        required: { value: true, message: 'Please enter your surname' },
+                        maxLength: {
+                          value: 30,
+                          message: 'Please use 30 characters or less'
+                        }
+                    })}
+                    required 
+                />
+                {errors.lastname && <span>{errors.lastname.message}</span>}
                 </div>
                 <div className="flex flex-col">
                 <label htmlFor="email" className='font-bold'>Email</label>
-                <input type="email" id="email" name="email" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required 
-                {...register('email', {
-                    required: true,
-                    pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-                })}/>
-                {errors.email && (
-                      <span className='errorMessage'>Please enter a valid email address</span>
-                )}
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2" 
+                    {...register('email', {
+                        required: true,
+                        pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+                    })}
+                    required 
+                />
+                {errors.email && (<span>Please enter a valid email address</span>)}
                 </div>
                 <div className="flex flex-col">
                 <label htmlFor="phone">
@@ -104,17 +120,21 @@ const Contact = () => {
                 </div>
                 <div className="flex flex-col col-span-2">
                 <label htmlFor="subject" className='font-bold'>Subject</label>
-                <input type="text" id="subject" name="subject" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" required 
-                {...register('subject', {
-                    required: { value: true, message: 'Please enter a subject' },
-                    maxLength: {
-                      value: 75,
-                      message: 'Subject cannot exceed 75 characters'
-                    }
-                })}/>
-                {errors.subject && (
-                      <span className='errorMessage'>{errors.subject.message}</span>
-                )}
+                <input 
+                    type="text" 
+                    id="subject" 
+                    name="subject" 
+                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2" 
+                    {...register('subject', {
+                        required: { value: true, message: 'Please enter a subject' },
+                        maxLength: {
+                          value: 75,
+                          message: 'Subject cannot exceed 75 characters'
+                        }
+                    })}
+                    required 
+                />
+                {errors.subject && (<span>{errors.subject.message}</span>)}
                 </div>
                 <div className="flex flex-col col-span-2">
                 <label htmlFor="subject">
@@ -123,10 +143,18 @@ const Contact = () => {
                     <span className="ml-auto opacity-75 font-bold">Max 500 characters</span>
                     </div>
                 </label>
-                <textarea maxLength="500" rows="4" type="text" id="subject" name="subject" className="form-input px-3 py-2 rounded-md border-4 border-blue-300  h-6/6" required 
-                {...register('message', {
-                    required: true
-                })}/>
+                <textarea 
+                    maxLength="500" 
+                    rows="4" 
+                    type="text" 
+                    id="message" 
+                    name="message" 
+                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300  h-6/6 mb-2" 
+                    {...register('message', {
+                        required: true
+                    })}
+                    required 
+                />
                 {errors.message && <span className='errorMessage'>Please enter a message</span>}
                 </div>
             </div>
@@ -136,7 +164,7 @@ const Contact = () => {
                 </button>
             </div>
             </form>
-            <ToastContainer/>
+            <ToastContainer/> {/* Displays when form submitted successfully */}
         </div>
         </div>
     );
