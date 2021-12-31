@@ -74,7 +74,7 @@ const Contact = () => {
                     })}
                     required 
                 />
-                {errors.firstname && <span>{errors.firstname.message}</span>}
+                {errors.firstname && <span className='text-red-500 font-bold'>{errors.firstname.message}</span>}
                 </div>
                 <div className="flex flex-col">
                 <label htmlFor="last-name" className='font-bold'>Last name</label>
@@ -92,7 +92,7 @@ const Contact = () => {
                     })}
                     required 
                 />
-                {errors.lastname && <span>{errors.lastname.message}</span>}
+                {errors.lastname && <span className='text-red-500 font-bold'>{errors.lastname.message}</span>}
                 </div>
                 <div className="flex flex-col">
                 <label htmlFor="email" className='font-bold'>Email</label>
@@ -107,7 +107,7 @@ const Contact = () => {
                     })}
                     required 
                 />
-                {errors.email && (<span>Please enter a valid email address</span>)}
+                {errors.email && (<span className='text-red-500 font-bold'>Please enter a valid email address</span>)}
                 </div>
                 <div className="flex flex-col">
                 <label htmlFor="phone">
@@ -134,7 +134,7 @@ const Contact = () => {
                     })}
                     required 
                 />
-                {errors.subject && (<span>{errors.subject.message}</span>)}
+                {errors.subject && (<span className='text-red-500 font-bold'>{errors.subject.message}</span>)}
                 </div>
                 <div className="flex flex-col col-span-2">
                 <label htmlFor="subject">
@@ -155,7 +155,7 @@ const Contact = () => {
                     })}
                     required 
                 />
-                {errors.message && <span className='errorMessage'>Please enter a message</span>}
+                {errors.message && <span className='text-red-500 font-bold'>Please enter a message</span>}
                 </div>
             </div>
             <div className="flex justify-end py-4 justify-center">
