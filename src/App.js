@@ -9,15 +9,21 @@ import Home from './Views/Home';
 import About from './Views/About';
 import Product from './Views/Product';
 import Contact from './Views/Contact';
+import waves from './geometric-glitch-waves.jpg';
 
 // Use Link for Linking to pages, Switch to change content and Route to route to the content on pages
 
 function App() {
   return (
-    <div>
+    <div style={{  
+      backgroundImage: `url(${waves})`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center'
+    }} className="overflow-auto h-screen"> {/* This class makes the background cover whole page when refreshing */}
         <Router>
         <Header/>
-        <div className="p-3">
+        <div>
           <Routes>
               <Route exact path='/' 
               element={ <Home/> }>           

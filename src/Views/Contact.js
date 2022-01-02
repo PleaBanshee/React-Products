@@ -52,14 +52,18 @@ const Contact = () => {
 
     return (
         <div>
-            <h1 className="font-bold text-2xl mb-3 m-3 text-center">
+            <h1 className="font-bold text-2xl mb-3 m-3 text-center" style={{
+                color: "#34e8eb" 
+            }}>
                 Contact Us
             </h1>
-            <div className="p-6  h-full">
+            <div className="p-6 h-full">
             <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col">
-                <label htmlFor="first-name" name="first-name" className='font-bold'>First name</label>
+                <label htmlFor="first-name" name="first-name" className='font-bold' style={{
+                color: "#34e8eb" 
+                }}>First name</label>
                 <input 
                     type="text" 
                     id="first-name" 
@@ -77,7 +81,9 @@ const Contact = () => {
                 {errors.firstname && <span className='text-red-500 font-bold'>{errors.firstname.message}</span>}
                 </div>
                 <div className="flex flex-col">
-                <label htmlFor="last-name" className='font-bold'>Last name</label>
+                <label htmlFor="last-name" className='font-bold' style={{
+                color: "#34e8eb" 
+                }}>Last name</label>
                 <input 
                     type="text" 
                     id="last-name" 
@@ -95,7 +101,9 @@ const Contact = () => {
                 {errors.lastname && <span className='text-red-500 font-bold'>{errors.lastname.message}</span>}
                 </div>
                 <div className="flex flex-col">
-                <label htmlFor="email" className='font-bold'>Email</label>
+                <label htmlFor="email" className='font-bold' style={{
+                color: "#34e8eb" 
+                }}>Email</label>
                 <input 
                     type="email" 
                     id="email" 
@@ -110,16 +118,20 @@ const Contact = () => {
                 {errors.email && (<span className='text-red-500 font-bold'>Please enter a valid email address</span>)}
                 </div>
                 <div className="flex flex-col">
-                <label htmlFor="phone">
+                <label htmlFor="phone" style={{
+                color: "#34e8eb" 
+                }}>
                     <div className="flex align-items font-bold">
                     Phone
-                    <span className="ml-auto opacity-75">Optional</span>
+                    <span className="ml-auto">Optional</span>
                     </div>
                 </label>
                 <input type="tel" id="phone" name="phone" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" />
                 </div>
                 <div className="flex flex-col col-span-2">
-                <label htmlFor="subject" className='font-bold'>Subject</label>
+                <label htmlFor="subject" className='font-bold' style={{
+                color: "#34e8eb" 
+                }}>Subject</label>
                 <input 
                     type="text" 
                     id="subject" 
@@ -137,7 +149,9 @@ const Contact = () => {
                 {errors.subject && (<span className='text-red-500 font-bold'>{errors.subject.message}</span>)}
                 </div>
                 <div className="flex flex-col col-span-2">
-                <label htmlFor="subject">
+                <label htmlFor="subject" style={{
+                color: "#34e8eb" 
+                }}>
                     <div className="flex align-items font-bold">
                     Message
                     <span className="ml-auto opacity-75 font-bold">Max 500 characters</span>

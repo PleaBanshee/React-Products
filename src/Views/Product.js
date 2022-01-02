@@ -43,8 +43,10 @@ const Product = () => {
 
     if (product.data) {
         return (
-            <div className="h-screen"> {/* makes page scrollable */}
-                <h1 className="font-bold text-2xl mb-3 m-3 text-center">
+            <div className="h-screen overflow-auto"> {/* makes page scrollable */}
+                <h1 className="font-bold text-2xl mb-3 m-3 text-center" style={{
+                color: "#34e8eb" 
+            }}>
                     Products
                 </h1>
                 <h2 className="font-bold text-2xl mb-3 m-3 text-center">
@@ -65,7 +67,7 @@ const Product = () => {
 
     return (
         <div>
-            <h1 className="font-bold text-2xl mb-3 m-3 text-center">
+            <h1 className="font-bold text-2xl m-3 text-center">
                 Something went wrong... try again
             </h1>
         </div>
