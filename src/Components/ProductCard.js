@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom'
 
 const ProductCard = (props) => {
     return (
-        <div className="border mb-4 rounded overflow-hidden">
+        <div className="border mb-4 rounded overflow-hidden" 
+        style={{"border":"5px solid","borderColor": "#34e8eb","boxShadow": "0.5px 0.5px 20px 0.5px #34e8eb"}}>
             <Link to={`/products/${props.product.id}`}>
                 <div 
                     style={{
@@ -20,7 +21,7 @@ const ProductCard = (props) => {
                     </Link>    
                 </h3>
                 <div className="font-bold mb-3 text-center">
-                    $ { props.product.price }
+                    R{ props.product.price }
                 </div>
                 <div className="mb-3 text-center">
                     { props.product.description }

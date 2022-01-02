@@ -14,7 +14,7 @@ const Home = () => {
         content = <div>
             <div className="bg-blue-300 mb-2 p-3 text-center">
                 If you see this error. Please remember to create your own  
-                <a className='underline text-indigo-600 hover:text-indigo-800 visited:text-purple-600' href="https://mockapi.io/"> mock API</a>.
+                <a className='underline text-indigo-600 hover:text-indigo-800 visited:text-purple-600' href="https://mockapi.io/"> Mock API</a>.
             </div>
             <div className="bg-red-300 p-3 text-center">
                 There was an error please refresh or try again later.
