@@ -6,7 +6,7 @@ import Loader from '../Components/Loader';
 
 const Product = () => {
     const { id } = useParams() // returns id from url parameters
-    let url = `https://61ceaf1565c32600170c7c9f.mockapi.io/api/v1/Product/${id}`;
+    const url = `https://61ceaf1565c32600170c7c9f.mockapi.io/api/v1/Product/${id}`;
     
     const [product,setProduct] = useState({
         loading: false,
