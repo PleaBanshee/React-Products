@@ -5,15 +5,16 @@ import { useAxiosGet } from '../Hooks/HttpRequests' // to fetch from Products pa
 
 const Home = () => {
     // last part of url allows you to only display 10 items from all the product
-    const url = `https://5e9623dc5b19f10016b5e31f.mockapi.io/api/v1/product?page=1&limit=10`
+    const url = `https://61ceaf1565c32600170c7c9f.mockapi.io/api/v1/Product?page=1&limit=10`
     let products = useAxiosGet(url)
     
     let content = null
 
-    if (products.error){
+    if (products.error) {
         content = <div>
             <div className="bg-blue-300 mb-2 p-3 text-center">
-                If you see this error. Please remember to create your own <a href="https://mockapi.io/">mock API</a>.
+                If you see this error. Please remember to create your own  
+                <a className='underline text-indigo-600 hover:text-indigo-800 visited:text-purple-600' href="https://mockapi.io/"> mock API</a>.
             </div>
             <div className="bg-red-300 p-3 text-center">
                 There was an error please refresh or try again later.
@@ -21,7 +22,7 @@ const Home = () => {
         </div>
     }
 
-    if (products.loading){
+    if (products.loading) {
         content = <Loader/>
     }
 
@@ -37,7 +38,7 @@ const Home = () => {
     }
 
     return (
-        <div>
+        <div className='flex flex-col justify-center items-center'>
             <h1 className="font-bold text-2xl mb-3 m-3 text-center">
                 Home
             </h1>
