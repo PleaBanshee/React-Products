@@ -20,10 +20,12 @@ const NavBar = () => {
     });
     
     return (
-        <nav >
+        <nav>
             <span className='text-xl'>
                 <FontAwesomeIcon icon={faBars} 
-                onClick={() => setMenu(!showMenu)}/> {/* toggle Menu */}
+                onClick={() => setMenu(!showMenu)} style={{
+                    color: "#34e8eb" 
+                }}/> {/* toggle Menu */}
             </span>
             {
                 maskTransitions((styles, item) => 

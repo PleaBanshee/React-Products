@@ -38,14 +38,20 @@ const Home = () => {
     }
 
     return (
-        <div className='flex flex-col justify-center items-center'>
-            <h1 className="font-bold text-2xl mb-3 m-3 text-center">
+        <div className='container mx-auto'>
+            <h1 className="font-bold text-2xl mb-3 m-3 text-center" style={{
+                color: "#34e8eb" 
+            }}>
                 Home
             </h1>
-            <h2 className="font-bold italic text-2xl mb-8 m-3 text-center">
+            <h2 className="font-bold italic text-2xl mb-8 m-3 text-center" style={{
+                color: "#34e8eb" 
+            }}>
                 Our Best Sellers:
             </h2>
-            {content}
+            <div className="md:flex flex-wrap md:-mx-10">
+                { content } 
+            </div>
         </div>
     );
 }
