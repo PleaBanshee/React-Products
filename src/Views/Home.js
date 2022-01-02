@@ -42,7 +42,7 @@ const Home = () => {
             <h1 className="font-bold text-2xl mb-3 m-3 text-center">
                 Home
             </h1>
-            <h2 className="font-bold italic text-2xl mb-3 m-3 text-center">
+            <h2 className="font-bold italic text-2xl mb-8 m-3 text-center">
                 Our Best Sellers:
             </h2>
             {content}

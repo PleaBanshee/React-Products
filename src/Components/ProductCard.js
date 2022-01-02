@@ -7,7 +7,7 @@ const ProductCard = (props) => {
             <Link to={`/products/${props.product.id}`}>
                 <div 
                     style={{
-                        'backgroundImage': `url('${props.product.images[0].imageUrl}')`,
+                        'backgroundImage': `url('${props.product.images[0].imageURL}')`,
                     }}
                     className="w-full h-64 bg-blue bg-cover"
                 >
