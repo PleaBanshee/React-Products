@@ -1,3 +1,4 @@
+// This function (custm Hook) allows you to reuse the HttpRequests instead of having to write axios fetches/apis the whole time
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 
@@ -8,7 +9,7 @@ export const useAxiosGet = (url) => {
         error: false
     })
 
-    useEffect(() => {
+    useEffect(() => { // executes when page/component rerenders
         setRequest({
             loading: true,
             data: null,
@@ -23,11 +24,11 @@ export const useAxiosGet = (url) => {
                 })
             })
             .catch(() => {
-                setRequest({
+                setTimeout(() => setRequest({
                     loading: false,
                     data: null,
                     error: true
-                })
+                }),2000)
             })
     }, [url])
 
