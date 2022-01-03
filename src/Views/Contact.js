@@ -52,23 +52,19 @@ const Contact = () => {
 
     return (
         <div>
-            <h1 className="font-bold text-2xl mb-3 m-3 text-center" style={{
-                color: "#34e8eb" 
-            }}>
+            <h1 className="font-bold text-2xl mb-3 m-3 text-center ba-blue">
                 Contact Us
             </h1>
             <div className="p-6 h-full">
             <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col">
-                <label htmlFor="first-name" name="first-name" className='font-bold' style={{
-                color: "#34e8eb" 
-                }}>First name</label>
+                <label htmlFor="first-name" name="first-name" className='font-bold ba-blue'>First name</label>
                 <input 
                     type="text" 
                     id="first-name" 
                     name="first-name" 
-                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2"
+                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2 bg-blue-500"
                     {...register('firstname', {
                         required: { value: true, message: 'Please enter your name' },
                         maxLength: {
@@ -78,17 +74,15 @@ const Contact = () => {
                     })}
                     required 
                 />
-                {errors.firstname && <span className='text-red-500 font-bold'>{errors.firstname.message}</span>}
+                {errors.firstname && <span className='text-red-600 font-bold'>{errors.firstname.message}</span>}
                 </div>
                 <div className="flex flex-col">
-                <label htmlFor="last-name" className='font-bold' style={{
-                color: "#34e8eb" 
-                }}>Last name</label>
+                <label htmlFor="last-name" className='font-bold ba-blue'>Last name</label>
                 <input 
                     type="text" 
                     id="last-name" 
                     name="last-name" 
-                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2"
+                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2 bg-blue-500"
                     {...register('lastname', {
                         required: { value: true, message: 'Please enter your surname' },
                         maxLength: {
@@ -98,45 +92,39 @@ const Contact = () => {
                     })}
                     required 
                 />
-                {errors.lastname && <span className='text-red-500 font-bold'>{errors.lastname.message}</span>}
+                {errors.lastname && <span className='text-red-600 font-bold'>{errors.lastname.message}</span>}
                 </div>
                 <div className="flex flex-col">
-                <label htmlFor="email" className='font-bold' style={{
-                color: "#34e8eb" 
-                }}>Email</label>
+                <label htmlFor="email" className='font-bold ba-blue'>Email</label>
                 <input 
                     type="email" 
                     id="email" 
                     name="email" 
-                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2" 
+                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2 bg-blue-500" 
                     {...register('email', {
                         required: true,
                         pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
                     })}
                     required 
                 />
-                {errors.email && (<span className='text-red-500 font-bold'>Please enter a valid email address</span>)}
+                {errors.email && (<span className='text-red-600 font-bold'>Please enter a valid email address</span>)}
                 </div>
                 <div className="flex flex-col">
-                <label htmlFor="phone" style={{
-                color: "#34e8eb" 
-                }}>
+                <label htmlFor="phone" className='ba-blue'>
                     <div className="flex align-items font-bold">
                     Phone
-                    <span className="ml-auto">Optional</span>
+                    <span className="ml-auto ghost-border">Optional</span>
                     </div>
                 </label>
-                <input type="tel" id="phone" name="phone" className="form-input px-3 py-2 rounded-md border-4 border-blue-300" />
+                <input type="tel" id="phone" name="phone" className="form-input px-3 py-2 rounded-md border-4 border-blue-300 bg-blue-500" />
                 </div>
                 <div className="flex flex-col col-span-2">
-                <label htmlFor="subject" className='font-bold' style={{
-                color: "#34e8eb" 
-                }}>Subject</label>
+                <label htmlFor="subject" className='font-bold ba-blue'>Subject</label>
                 <input 
                     type="text" 
                     id="subject" 
                     name="subject" 
-                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2" 
+                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 mb-2 bg-blue-500" 
                     {...register('subject', {
                         required: { value: true, message: 'Please enter a subject' },
                         maxLength: {
@@ -146,15 +134,13 @@ const Contact = () => {
                     })}
                     required 
                 />
-                {errors.subject && (<span className='text-red-500 font-bold'>{errors.subject.message}</span>)}
+                {errors.subject && (<span className='text-red-600 font-bold'>{errors.subject.message}</span>)}
                 </div>
                 <div className="flex flex-col col-span-2">
-                <label htmlFor="subject" style={{
-                color: "#34e8eb" 
-                }}>
+                <label htmlFor="subject" className='ba-blue'>
                     <div className="flex align-items font-bold">
                     Message
-                    <span className="ml-auto opacity-75 font-bold">Max 500 characters</span>
+                    <span className="ml-auto font-bold ghost-border">Max 500 characters</span>
                     </div>
                 </label>
                 <textarea 
@@ -163,13 +149,13 @@ const Contact = () => {
                     type="text" 
                     id="message" 
                     name="message" 
-                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300  h-6/6 mb-2" 
+                    className="form-input px-3 py-2 rounded-md border-4 border-blue-300 h-6/6 mb-2 bg-blue-500" 
                     {...register('message', {
                         required: true
                     })}
                     required 
                 />
-                {errors.message && <span className='text-red-500 font-bold'>Please enter a message</span>}
+                {errors.message && <span className='text-red-600 font-bold'>Please enter a message</span>}
                 </div>
             </div>
             <div className="flex justify-end py-4 justify-center">

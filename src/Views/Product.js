@@ -44,21 +44,19 @@ const Product = () => {
     if (product.data) {
         return (
             <div className="h-screen overflow-auto"> {/* makes page scrollable */}
-                <h1 className="font-bold text-2xl mb-3 m-3 text-center" style={{
-                color: "#34e8eb" 
-            }}>
+                <h1 className="font-bold text-2xl mb-3 m-3 text-center ba-blue">
                     Products
                 </h1>
-                <h2 className="font-bold text-2xl mb-3 m-3 text-center">
+                <h2 className="font-bold text-2xl mb-3 m-3 text-center ba-blue">
                     {product.data.name}
                 </h2>
                 <div className='flex justify-center align-items'>
                     <img src={product.data.images[0].imageURL} alt={product.data.name}/>
                 </div>
-                <div className='font-bold text-center text-xl mb-3'>
+                <div className='font-bold text-center text-xl mb-3 ba-blue'>
                     R{product.data.price}
                 </div>
-                <div className='text-center font-bold'>
+                <div className='text-center font-bold ba-blue'>
                     {product.data.description}
                 </div>
             </div>

@@ -39,14 +39,10 @@ const Home = () => {
 
     return (
         <div className='container mx-auto'>
-            <h1 className="font-bold text-2xl mb-3 m-3 text-center" style={{
-                color: "#34e8eb" 
-            }}>
+            <h1 className="font-bold text-2xl mb-3 m-3 text-center ba-blue">
                 Home
             </h1>
-            <h2 className="font-bold italic text-2xl mb-8 m-3 text-center" style={{
-                color: "#34e8eb" 
-            }}>
+            <h2 className="font-bold italic text-2xl mb-8 m-3 text-center ba-blue">
                 Our Best Sellers:
             </h2>
             <div className="md:flex flex-wrap md:-mx-10">

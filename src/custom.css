@@ -1,0 +1,9 @@
+.ba-blue {
+    color: #34e8eb
+}
+
+.ghost-border {
+    border: #34e8eb;
+    box-shadow: 0.5px 0.5px 20px 0.5px #34e8eb;
+    filter: blur(0.5px)
+}
