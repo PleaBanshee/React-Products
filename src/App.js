@@ -20,10 +20,11 @@ function App() {
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center'
-    }} className="overflow-auto h-screen"> {/* This class makes the background cover whole page when refreshing */}
+    }} className="relative pb-10 min-h-screen"> 
+    {/* Above css well positions the Footer */}
         <Router>
         <Header/>
-        <div>
+        <div className="p-1">
           <Routes>
               <Route exact path='/' 
               element={ <Home/> }>           

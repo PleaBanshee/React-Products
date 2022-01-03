@@ -45,7 +45,7 @@ const Home = () => {
             <h2 className="font-bold italic text-2xl mb-8 m-3 text-center ba-blue">
                 Our Best Sellers:
             </h2>
-            <div className="md:flex flex-wrap md:-mx-10">
+            <div className="md:flex flex-wrap md:-mx-3">
                 { content } 
             </div>
         </div>
